@@ -1,0 +1,96 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Product index{% endblock %}
+
+{% block body %}
+<div class="row row-sm"> 
+    <div class="col-lg-12">
+         <div class="card"> 
+            <div class="card-header"> 
+                <h3 class="card-title">depenses</h3>
+             </div>
+              <div class="card-body"> 
+                <div class="table-responsive">
+                     <div id="file-datatable_wrapper" class="dataTables_wrapper dt-bootstrap5 no-footer">
+                        <div class="row"><div class="col-sm-12 col-md-6">
+                            <div class="dataTables_length" id="file-datatable_length">
+                                <label>Show <select name="file-datatable_length" aria-controls="file-datatable" class="form-select form-select-sm select2 select2-hidden-accessible" tabindex="-1" aria-hidden="true">
+                                    <option value="10">10</option>
+                                    <option value="25">25</option>
+                                    <option value="50">50</option>
+                                    <option value="100">100</option>
+                                </select>
+                                <span class="select2 select2-container select2-container--default" dir="ltr" style="width: 60.8px;">
+                                    <span class="selection">
+                                        <span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-labelledby="select2-file-datatable_length-7s-container">
+                                            <span class="select2-selection__rendered" id="select2-file-datatable_length-7s-container" title="10">10</span>
+                                            <span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span>
+                                        </span>
+                                    </span>
+                                    <span class="dropdown-wrapper" aria-hidden="true">
+                                    </span>
+                                </span> entries</label>
+                            </div>
+                            <div class="dt-buttons btn-group flex-wrap">     
+                                 <button class="btn btn-primary buttons-copy buttons-html5" tabindex="0" aria-controls="file-datatable" type="button">
+                                    <span>Copy</span></button> <button class="btn btn-primary buttons-excel buttons-html5" tabindex="0" aria-controls="file-datatable" type="button">
+                                        <span>Excel</span></button> <button class="btn btn-primary buttons-pdf buttons-html5" tabindex="0" aria-controls="file-datatable" type="button">
+                                            <span>PDF</span>
+                                        </button>
+                                         <div class="btn-group"><button class="btn btn-primary buttons-collection dropdown-toggle buttons-colvis" tabindex="0" aria-controls="file-datatable" type="button" aria-haspopup="true" aria-expanded="false">
+                                            <span>Column visibility</span>
+                                        </button>
+                                    </div> 
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-md-6"><div id="file-datatable_filter" class="dataTables_filter">
+                                <label>
+                                    <input type="search" class="form-control form-control" placeholder="Search..." aria-controls="file-datatable"></label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row"><div class="col-sm-12"><table id="file-datatable" class="table table-bordered text-nowrap key-buttons border-bottom dataTable no-footer" role="grid" aria-describedby="file-datatable_info">
+                             <thead>
+                                <tr role="row">
+                                    <th class="border-bottom-0 sorting sorting_asc" tabindex="0" aria-controls="file-datatable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 172.312px;">Id</th>
+                                    <th class="border-bottom-0 sorting" tabindex="0" aria-controls="file-datatable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 274.175px;">Montant</th>
+                                    <th class="border-bottom-0 sorting" tabindex="0" aria-controls="file-datatable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 124.75px;">Payment</th>
+                                    <th class="border-bottom-0 sorting" tabindex="0" aria-controls="file-datatable" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending" style="width: 62.1875px;">Date</th>
+                                    <th class="border-bottom-0 sorting" tabindex="0" aria-controls="file-datatable" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending" style="width: 62.1875px;">Action</th>
+                                </tr> </thead>
+                                 <tbody> <tr class="odd">
+                                  {% for depense in depenses %}
+                                 <td class="sorting_1">{{ depense.id }}</td>
+                                    <td>{{ depense.prix }}</td>
+                                    <td>{{ depense.Payment }}</td>
+                                    <td>{{ depense.dateAjout|date('Y-m-d') }}</td>
+                                    <td>
+                                        <button class="btn btn-primary buttons-pdf buttons-html5" tabindex="0" aria-controls="file-datatable" type="button">
+                                            <span>edit</span>
+                                        <button class="btn btn-primary buttons-pdf buttons-html5" tabindex="0" aria-controls="file-datatable" type="button">
+                                            <span>delete</span>
+                                    </td>
+                                  {% else %}
+            <tr>
+                <td colspan="15">no records found</td>
+            </tr>
+                    {% endfor %}
+
+                                    </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="row"><div class="col-sm-12 col-md-12">
+                                <div class="dataTables_info" id="file-datatable_info" role="status" aria-live="polite">Showing 1 to 10 of 57 entries</div>
+                            </div>
+                            <div class="col-sm-12 col-md-12"><div class="dataTables_paginate paging_simple_numbers" id="file-datatable_paginate"><ul class="pagination">
+                                <li class="paginate_button page-item previous disabled" id="file-datatable_previous"><a href="#" aria-controls="file-datatable" data-dt-idx="0" tabindex="0" class="page-link">Previous</a></li>
+                                <li class="paginate_button page-item active"><a href="#" aria-controls="file-datatable" data-dt-idx="1" tabindex="0" class="page-link">1</a></li>
+                                <li class="paginate_button page-item "><a href="#" aria-controls="file-datatable" data-dt-idx="2" tabindex="0" class="page-link">2</a></li>
+                                <li class="paginate_button page-item "><a href="#" aria-controls="file-datatable" data-dt-idx="3" tabindex="0" class="page-link">3</a></li>
+                                <li class="paginate_button page-item "><a href="#" aria-controls="file-datatable" data-dt-idx="4" tabindex="0" class="page-link">4</a></li>
+                                <li class="paginate_button page-item "><a href="#" aria-controls="file-datatable" data-dt-idx="5" tabindex="0" class="page-link">5</a></li>
+                                <li class="paginate_button page-item "><a href="#" aria-controls="file-datatable" data-dt-idx="6" tabindex="0" class="page-link">6</a></li>
+                                <li class="paginate_button page-item next" id="file-datatable_next"><a href="#" aria-controls="file-datatable" data-dt-idx="7" tabindex="0" class="page-link">Next</a></li>
+                            </ul></div></div></div></div> </div> </div> </div> </div> </div>
+{% endblock %}
