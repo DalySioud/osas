@@ -7,25 +7,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.min.js"></script>
 
-<script>
-    // Manually initialize the modals
-    $(document).ready(function() {
-        // Select all elements with the 'data-bs-toggle' attribute set to 'modal'
-        var modalTriggers = document.querySelectorAll('[data-bs-toggle="modal"]');
 
-        // Loop through each modal trigger
-        modalTriggers.forEach(function(trigger) {
-            // Get the 'data-depense-id' attribute value
-            var depenseId = trigger.dataset.depenseId;
-
-            // Create a unique modal selector using the depenseId
-            var modalSelector = '#deleteConfirmationModal' + depenseId;
-
-            // Initialize the modal
-            var yourModal = new bootstrap.Modal(document.querySelector(modalSelector));
-        });
-    });
-</script>
 {% endblock %}
 
 {% block body %}
@@ -33,7 +15,7 @@
     <div class="col-lg-12">
          <div class="card"> 
             <div class="card-header"> 
-                <h3 class="card-title">Depenses</h3>
+                <h3 class="card-title">Commandes</h3>
              </div>
               <div class="card-body"> 
                 <div class="table-responsive">
@@ -58,7 +40,7 @@
                                 
                             </div>
                             <div class="col-md-12 d-flex justify-content-end">
-                                <a href="{{ path('app_depense_new') }}" class="btn buttons-copy buttons-html5 ml-auto" style="background-color: #2BC3EC; color: white;" tabindex="0" aria-controls="file-datatable" type="button">                       
+                                <a href="{{ path('app_commande_new') }}" class="btn buttons-copy buttons-html5 ml-auto" style="background-color: #2BC3EC; color: white;" tabindex="0" aria-controls="file-datatable" type="button">                       
                                     <span>Ajouter</span>                                    
                                 </a> 
                             </div> 
@@ -67,55 +49,33 @@
                         <div class="row"><div class="col-sm-12"><table id="file-datatable" class="table table-bordered text-nowrap key-buttons border-bottom dataTable no-footer" role="grid" aria-describedby="file-datatable_info">
                              <thead>
                                 <tr role="row">
-                                    <th class="border-bottom-0 sorting sorting_asc" tabindex="0" aria-controls="file-datatable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 90px;">Id</th>
-                                    <th class="border-bottom-0 sorting" tabindex="0" aria-controls="file-datatable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 100px;">Prix Dollar</th>
-                                    <th class="border-bottom-0 sorting" tabindex="0" aria-controls="file-datatable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 100px;">Prix Dinar</th>
-                                    <th class="border-bottom-0 sorting" tabindex="0" aria-controls="file-datatable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 100px;">Type</th>
-                                    <th class="border-bottom-0 sorting" tabindex="0" aria-controls="file-datatable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 100px;">Date Debut</th>
-                                    <th class="border-bottom-0 sorting" tabindex="0" aria-controls="file-datatable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 100px;">Date Fin</th>
-                                    <th class="border-bottom-0 sorting" tabindex="0" aria-controls="file-datatable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 100px;">Paiement</th>
-                                    <th class="border-bottom-0 sorting" tabindex="0" aria-controls="file-datatable" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending" style="width: 200px;">Date Ajout</th>
+                                    <th class="border-bottom-0 sorting sorting_asc" tabindex="0" aria-controls="file-datatable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 90px;">Id Commande</th>
+                                    <th class="border-bottom-0 sorting" tabindex="0" aria-controls="file-datatable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 100px;">Nom Client</th>
+                                    <th class="border-bottom-0 sorting" tabindex="0" aria-controls="file-datatable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 100px;">Numero Tel</th>
+                                    <th class="border-bottom-0 sorting" tabindex="0" aria-controls="file-datatable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 100px;">Gouvernorat</th>
+                                    <th class="border-bottom-0 sorting" tabindex="0" aria-controls="file-datatable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 100px;">Adresse</th>
+                                    
                                     <th class="border-bottom-0 sorting" tabindex="0" aria-controls="file-datatable" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending" style="width: 200px;">Action</th>
                                 </tr> </thead>
-                                 {% for depense in depenses %}
+                                 {% for commande in commandes %}
                                  <tbody> <tr class="odd">
                                   
-                                 <td class="sorting_1">{{ depense.id }}</td>
-                                    <td>{% if depense.type not in ['sponsoring', 'Sponsoring'] %}
-                                        Null
-                                    {% else %}
-                                        {{ depense.prix }}
-                                    {% endif %}</td>
-                                    <td>{{ depense.prixEnDinar  }}</td>
-                                    <td>{{ depense.type }}</td>
-                                    <td>{% if depense.type not in ['sponsoring', 'Sponsoring'] %}
-                                        Null
-                                    {% else %}
-                                        {{ depense.DateDebut|date('Y-m-d') }}
-                                    {% endif %}</td>
-                                    <td>{% if depense.type not in ['sponsoring', 'Sponsoring'] %}
-                                        Null
-                                    {% else %}
-                                        {{ depense.DateFin|date('Y-m-d') }}
-                                    {% endif %}</td>
-                                    <td><div>
-                                        <h4 class="mt-4">
-                                            <b>
-                                                {% if depense.payment == 1 %}
-                                                    <span class="badge bg-success-transparent rounded-pill text-success p-2 px-3">Payée</span>
-                                                {% else %}
-                                                    <span class="badge bg-danger-transparent rounded-pill text-danger p-2 px-3">Non Payée</span>
-                                                {% endif %}
-                                            </b>
-                                        </h4>
-                                    </div></td>
-                                    <td>{{ depense.dateAjout|date('Y-m-d') }}</td>
+                                 <td class="sorting_1">{{ commande.id }}</td>
+                                    <td>{{ commande.NomClient  }}</td>
+                                    <td>{{ commande.numtel  }}</td>
+                                    <td>{{ commande.gouvernorat }}</td>
+                                    <td>{{ commande.adresse }}</td>
+                                    
                                     <td>
 
                                         <a class="btn text-primary btn-sm"
                                             data-bs-toggle="tooltip"
-                                            data-bs-original-title="Edit" href="{{path('app_depense_edit', {'id': depense.id})}}"><span
+                                            data-bs-original-title="Edit" href="{{path('app_commande_edit', {'id': commande.id})}}"><span
                                                 class="fe fe-edit fs-14"></span></a>
+                                        
+                                        <a class="btn text-primary btn-sm" data-bs-toggle="tooltip" data-bs-original-title="View" href="{{ path('app_commande_show', {'id': commande.id}) }}">
+                                            <span class="bi bi-eye"></span>
+                                        </a>
                                         
                                        {#  <a class="btn text-danger btn-sm"
                                         data-bs-toggle="tooltip"
@@ -129,8 +89,8 @@
 
                                         <a class="btn text-danger btn-sm"
                                             data-bs-toggle="modal"
-                                            data-bs-target="#deleteConfirmationModal{{ depense.id }}"
-                                            data-depense-id="{{ depense.id }}">
+                                            data-bs-target="#deleteConfirmationModal{{ commande.id }}"
+                                            data-depense-id="{{ commande.id }}">
                                                 <span class="fe fe-trash-2 fs-14" style="color: red; margin-left: 15px;"></span>
                                         </a>
                                                                                 
@@ -153,7 +113,7 @@
                 <td colspan="15">no records found</td>
             </tr>
 
-                    <div class="modal fade" id="deleteConfirmationModal{{ depense.id }}" tabindex="-1" aria-labelledby="deleteConfirmationModalLabel" aria-hidden="true">
+                    <div class="modal fade" id="deleteConfirmationModal{{ commande.id }}" tabindex="-1" aria-labelledby="deleteConfirmationModalLabel" aria-hidden="true">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
                                         <div class="modal-header">
@@ -165,8 +125,8 @@
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                                            <form id="delete-form-{{ depense.id }}" method="post" action="{{ path('app_depense_delete', {'id': depense.id}) }}">
-                                                <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ depense.id) }}">
+                                            <form id="delete-form-{{ commande.id }}" method="post" action="{{ path('app_depense_delete', {'id': commande.id}) }}">
+                                                <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ commande.id) }}">
                                                 <button type="submit" class="btn btn-danger">Delete</button>
                                             </form>
                                         </div>

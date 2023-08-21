@@ -1,0 +1,6 @@
+<form method="post" action="{{ path('app_depense_delete', {'id': depense.id}) }}" onsubmit="return showDeleteConfirmation(event);">
+    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ depense.id) }}">
+    <button class="btn buttons-pdf buttons-html5" style="background-color: #109BC1; color: red;" tabindex="0" aria-controls="file-datatable">Delete</button>
+</form>
+
+

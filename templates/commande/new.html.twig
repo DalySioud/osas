@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Commande{% endblock %}
+
+{% block body %}
+
+                           <div class="card checkout-shipping-form shadow-none h-800vh">
+                              <div class="card-header border-bottom-100 align-content-start pb-sm-10 pb-1 px-10">
+                                 <h4 class="fw-500">Ajouter Commande</h4>
+                              </div>
+                              <div class="card-body p-100">
+                                 <div class="edit-profile__body">
+                                   {{ include('commande/_form.html.twig') }} 
+                                 </div>
+                              </div>
+                           </div><!-- ends: card -->
+                     
+
+
+{% endblock %}

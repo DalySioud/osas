@@ -1,0 +1,131 @@
+{{ form_start(form,{'attr':{'novalidate':'novalidate'}}) }}
+
+<div class="container-fluid">
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="user-info-tab w-100 bg-white global-shadow radius-xl mb-50">
+                <div class="ap-tab-wrapper border-bottom ">
+                    <ul class="nav px-30 ap-tab-main text-capitalize" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                        <li class="nav-item">
+                        </li>
+                        <li class="nav-item">
+                        </li>
+                        <li class="nav-item">
+                        </li>
+                    </ul>
+                </div>
+                <div class="tab-content" id="v-pills-tabContent">
+                    <div class="tab-pane fade  show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+                        <div class="row justify-content-left">
+                            <div class="col-l-12 col-10">
+                                <div class="mt-sm-40 mb-sm-50 mt-20 mb-20">
+                                    <div class="user-tab-info-title mb-sm-40 mb-20 text-capitalize">
+                                        
+                                    </div>
+                                    <div class="edit-profile__body">
+                                        <form>
+
+
+                                            <div class="row">
+                                            <div class="col-lg-6 col-md-12" style="margin-bottom: 20px;">
+                                                <div class="form-group custom-form-group">
+                                                    <label for="exampleInputname">Prix</label>
+                                                    {{ form_widget(form.prix, {'attr': {'class': 'form-control custom-form-control', 'style': 'width: 100%; padding: 12px;'}}) }}
+                                                    {{ form_errors(form.prix) }}
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6 col-md-12" style="margin-bottom: 20px;">
+                                                <div class="form-group custom-form-group">
+                                                    <label for="exampleInputname1">Type Depense</label>
+                                                    {{ form_widget(form.type, {'attr': {'class': 'form-control custom-form-control', 'style': 'width: 100%; padding: 12px;', 'id': 'depense_type'}}) }}
+                                                    {{ form_errors(form.type) }}
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-lg-6 col-md-12" style="margin-bottom: 20px;">
+                                                <div class="form-group custom-form-group">
+                                                    {{ form_label(form.payment, 'Statut Depense') }}
+                                                    <label class="custom-switch form-switch" style="width: 300px;">
+                                                        {{ form_widget(form.payment, {'attr': {'class': 'custom-switch-input', 'data-toggle': 'toggle', 'data-onstyle': 'success'}}) }}
+                                                        <span class="custom-switch-indicator"></span>
+                                                        <span class="custom-switch-description">Payé</span>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row" id="date_fields_row">
+                                            <div class="col-lg-6 col-md-12" style="margin-bottom: 20px;">
+                                                <div class="form-group custom-form-group">
+                                                    
+                                                    {{ form_row(form.date_debut, {'attr': {'class': 'form-control custom-form-control', 'style': 'width: 100%; padding: 12px;', 'id': 'depense_date_debut'}}) }}
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6 col-md-12" style="margin-bottom: 20px;">
+                                                <div class="form-group custom-form-group">
+                                                    
+                                                    {{ form_row(form.date_fin, {'attr': {'class': 'form-control custom-form-control', 'style': 'width: 100%; padding: 12px;', 'id': 'depense_date_fin'}}) }}
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                           
+
+
+
+
+
+
+                                            <div class="button-group d-flex pt-sm-25 justify-content-md-end justify-content-start">
+                                                <button class="btn btn-default btn-squared text-capitalize radius-md shadow2 btn-sm" style="background-color: #2BC3EC;color: white; width: 160px; height: 40px;">
+                                                    {{ button_label|default('Enregistrer') }}
+                                                </button>
+                                            </div>
+
+                                            <script>
+                                                // Function to show/hide the date fields based on the selected value of the type field
+                                                function handleDateFieldsVisibility() {
+                                                    const typeField = document.getElementById('depense_type');
+                                                    const dateFieldsRow = document.getElementById('date_fields_row');
+                                                    const dateDebutField = document.getElementById('depense_date_debut');
+                                                    const dateFinField = document.getElementById('depense_date_fin');
+
+                                                    // Convert both the typeField.value and the comparison string to lowercase
+                                                    const selectedType = typeField.value.toLowerCase();
+                                                    const sponsoringType = 'sponsoring';
+
+                                                    // If the selected value of the type field is 'Sponsoring', show the date fields
+                                                    if (selectedType === sponsoringType) {
+                                                        dateFieldsRow.style.display = 'block';
+                                                    } else {
+                                                        // Otherwise, hide the date fields and set their values to null
+                                                        dateFieldsRow.style.display = 'none';
+                                                        dateDebutField.value = '';
+                                                        dateFinField.value = '';
+                                                    }
+                                                }
+
+                                                // Add an event listener to the type field to call the handleDateFieldsVisibility function on change
+                                                const typeField = document.getElementById('depense_type');
+                                                typeField.addEventListener('change', handleDateFieldsVisibility);
+
+                                                // Call the handleDateFieldsVisibility function on page load to initialize the visibility of the date fields
+                                                handleDateFieldsVisibility();
+                                            </script>
+
+                                            {{ form_end(form) }}
+                                        </form>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

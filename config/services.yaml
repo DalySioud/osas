@@ -32,3 +32,9 @@ services:
         resource: '../src/Controller/'
         tags: ['controller.service_arguments']
 
+
+    App\Service\ConversionService:
+        arguments:
+            $apiKey: '%env(EXCHANGE_RATES_API_KEY)%'
+
+

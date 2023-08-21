@@ -1,0 +1,81 @@
+{{ form_start(form,{'attr':{'novalidate':'novalidate'}}) }}
+
+<div class="container-fluid">
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="user-info-tab w-100 bg-white global-shadow radius-xl mb-50">
+                <div class="ap-tab-wrapper border-bottom ">
+                    <ul class="nav px-30 ap-tab-main text-capitalize" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                        <li class="nav-item">
+                        </li>
+                        <li class="nav-item">
+                        </li>
+                        <li class="nav-item">
+                        </li>
+                    </ul>
+                </div>
+                <div class="tab-content" id="v-pills-tabContent">
+                    <div class="tab-pane fade  show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+                        <div class="row justify-content-left">
+                            <div class="col-l-12 col-10">
+                                <div class="mt-sm-40 mb-sm-50 mt-20 mb-20">
+                                    <div class="user-tab-info-title mb-sm-40 mb-20 text-capitalize">
+                                        
+                                    </div>
+                                    <div class="edit-profile__body">
+                                        <form>
+
+
+                                            <div class="row">
+                                            <div class="col-lg-6 col-md-12" style="margin-bottom: 20px;">
+                                                <div class="form-group custom-form-group">
+                                                    <label for="exampleInputname">Nom Client</label>
+                                                    {{ form_widget(form.NomClient, {'attr': {'class': 'form-control custom-form-control', 'style': 'width: 100%; padding: 12px;'}}) }}
+                                                    {{ form_errors(form.NomClient) }}
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6 col-md-12" style="margin-bottom: 20px;">
+                                                <div class="form-group custom-form-group">
+                                                    <label for="exampleInputname1">Num Tel</label>
+                                                    {{ form_widget(form.numtel, {'attr': {'class': 'form-control custom-form-control', 'style': 'width: 100%; padding: 12px;', 'id': 'depense_type'}}) }}
+                                                    {{ form_errors(form.numtel) }}
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6 col-md-12" style="margin-bottom: 20px;">
+                                                <div class="form-group custom-form-group">
+                                                    <label for="exampleInputname1">Gouvernerat</label>
+                                                    {{ form_widget(form.gouvernorat, {'attr': {'class': 'form-control custom-form-control', 'style': 'width: 100%; padding: 12px;', 'id': 'depense_type'}}) }}
+                                                    {{ form_errors(form.gouvernorat) }}
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6 col-md-12" style="margin-bottom: 20px;">
+                                                <div class="form-group custom-form-group">
+                                                    <label for="exampleInputname1">Adresse</label>
+                                                    {{ form_widget(form.adresse, {'attr': {'class': 'form-control custom-form-control', 'style': 'width: 100%; padding: 12px;', 'id': 'depense_type'}}) }}
+                                                    {{ form_errors(form.adresse) }}
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        
+
+                                        
+                                            <div class="button-group d-flex pt-sm-25 justify-content-md-end justify-content-start">
+                                                <button class="btn btn-default btn-squared text-capitalize radius-md shadow2 btn-sm" style="background-color: #2BC3EC;color: white; width: 160px; height: 40px;">
+                                                    {{ button_label|default('Enregistrer') }}
+                                                </button>
+                                            </div>
+                                            {{ form_end(form) }}
+                                        </form>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

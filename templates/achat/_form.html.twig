@@ -1,0 +1,47 @@
+{# templates/achat/new.html.twig #}
+
+{{ form_start(form,{'attr':{'novalidate':'novalidate'}}) }}
+
+<div class="container-fluid">
+    <div class="row justify-content-left">
+        <div class="col-l-12 col-10">
+            <div class="mt-sm-40 mb-sm-50 mt-20 mb-20">
+                <div class="mt-20 mb-20">
+                    <div class="edit-profile__body">
+                        <form>
+                            <div class="row">
+                                <div class="col-lg-6 col-md-12" style="margin-bottom: 20px;">
+                                    <div class="form-group custom-form-group">
+                                        <label for="exampleInputname">Quantité</label>
+                                        {{ form_widget(form.quantite, {'attr': {'class': 'form-control custom-form-control', 'style': 'width: 100%; padding: 12px;'}}) }}
+                                        {{ form_errors(form.quantite) }}
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-12" style="margin-bottom: 20px;">
+                                    <div class="form-group custom-form-group">
+                                        <label for="exampleInputname">Commande</label>
+                                        {{ form_widget(form.commande, {'attr': {'class': 'form-control custom-form-control', 'style': 'width: 100%; padding: 12px;'}}) }}
+                                        {{ form_errors(form.commande) }}
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-12" style="margin-bottom: 20px;">
+                                    <div class="form-group custom-form-group">
+                                        <label for="exampleInputname">product</label>
+                                        {{ form_widget(form.product, {'attr': {'class': 'form-control custom-form-control', 'style': 'width: 100%; padding: 12px;'}}) }}
+                                        {{ form_errors(form.product) }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="button-group d-flex pt-sm-25 justify-content-md-end justify-content-start">
+                                <button class="btn btn-default btn-squared text-capitalize radius-md shadow2 btn-sm" style="background-color: #2BC3EC;color: white; width: 160px; height: 40px;">
+                                    {{ button_label|default('Enregistrer') }}
+                                </button>
+                            </div>
+                            {{ form_end(form) }}
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
